@@ -17,5 +17,5 @@ Run the project using `java -jar target/sample.jar`
 This will start the server on `port 8080`  
 
 Click on Install on the App Page  
-you will see the message - `App Install event Occurred`  
-Click on Uninstall you will see the message - `App Uninstall event Occurred`
+you will see the message - `App Install event Occurred` on console
+Click on Uninstall you will see the message - `App Uninstall event Occurred` on console
