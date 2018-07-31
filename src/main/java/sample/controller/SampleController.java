@@ -1,6 +1,7 @@
 package sample.controller;
 
 import com.flock.EventHandlerClient;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,8 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/sample")
 public class SampleController {
     private EventHandlerClient eventHandlerClient;
-    private String appId = "0951f74a-4e6a-4884-803c-b434453371ff";
-    private String appSecret = "8f221431-7a5a-42a6-bc19-42713e40d155";
+    @Value("${appId}")
+    private String appId;
+    @Value("${appSecret}")
+    private String appSecret;
 
     @PostConstruct
     public void initMethodAfterBeansSet() throws Exception {
