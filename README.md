@@ -1,6 +1,6 @@
 # Sample JAVA APP with Event Listener
 
-Run the command `mvn clean package` under `java-sample` folder
+Run the command `mvn clean package` under `java-sample` folder  
 This will produce a file `sample.jar` under `target` folder  
 Run the project using `java -jar target/sample.jar`  
 This will start the server on `port 8080`  
