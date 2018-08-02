@@ -1,6 +1,9 @@
 package sample.controller;
 
 import com.flock.EventHandlerClient;
+import com.flock.event.EventListener;
+import com.flock.model.AppInstall;
+import com.flock.model.AppUninstall;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +26,20 @@ public class SampleController {
     @PostConstruct
     public void initMethodAfterBeansSet() throws Exception {
         eventHandlerClient = new EventHandlerClient(appId, appSecret);
-        eventHandlerClient.setAppInstallListener((event) -> {
-            System.out.println("App Install event Occurred");
-        });
-        eventHandlerClient.setAppUninstallListener((event) -> {
-            System.out.println("App Uninstall event Occurred");
-        });
+        EventListener<AppInstall> appInstallEventListener = new EventListener<AppInstall>() {
+            @Override
+            public void handle(AppInstall appInstall) {
+                System.out.println("App Install event Occurred");
+            }
+        };
+        EventListener<AppUninstall> appUninstallEventListener = new EventListener<AppUninstall>() {
+            @Override
+            public void handle(AppUninstall appUninstall) {
+                System.out.println("App Uninstall event Occurred");
+            }
+        };
+        eventHandlerClient.setAppInstallListener(appInstallEventListener);
+        eventHandlerClient.setAppUninstallListener(appUninstallEventListener);
     }
 
     @RequestMapping(value = "/event", method = RequestMethod.POST)
