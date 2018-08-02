@@ -37,7 +37,8 @@ public class SampleController {
         try {
             eventHandlerClient.handleRequest(request, response);
         } catch (Exception ex) {
-            System.out.println("Some Exception");
+            ex.printStackTrace();
+            System.out.println("Some Exception" + ex);
         }
     }
 }
